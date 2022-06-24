@@ -9,4 +9,3 @@ while counter < maximum:
 
 print("Done!")
 
-
