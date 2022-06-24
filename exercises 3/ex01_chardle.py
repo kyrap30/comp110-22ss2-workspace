@@ -1,4 +1,4 @@
-"""EX01 - Chardle - A cute step toward Wordle."""
+"""EX01 - Chardle - A cute step toward Wordle"""
 __author__ = "730466380"
 
 
@@ -21,7 +21,7 @@ if letter_guess == WORD_GUESS[0]:
     num_of_letters = num_of_letters + 1
     print(letter_guess + " found at index 0")
 if letter_guess == WORD_GUESS[1]:
-    num_of_letters = num_of_letters + 1
+    num_of_letterse = num_of_letters + 1
     print(letter_guess + " found at index 1")
 if letter_guess == WORD_GUESS[2]:
     num_of_letters = num_of_letters + 1
