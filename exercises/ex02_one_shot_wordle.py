@@ -1,36 +1,38 @@
-__author__ = "730466380"
 """EX02 - One shot wordle."""
+__author__ = "730466380"
 
 WORD: str = "python"
-
 WHITE_BOX: str = "\U00002B1C"
 GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
-
-input: int = 0
+actplace: int = 0
+place: int = 0
 box_emoji: str = ""
-f: int = 0
 
-word_guess: str = input(f"What is your 6-letter guess? ")
+word_guess: str = str(input(f"What is your {len(WORD)} guess? "))
 
-if len(WORD) != len(word_guess):
+while len(WORD) != len(word_guess):
     word_guess: str = str(input("That was not 6 letters! Try again: "))
 
 
-while input < len(word_guess):
-    if WORD[input] == word_guess[input]:
+while place < len(word_guess):
+
+    if WORD[place] == word_guess[place]:
         print(GREEN_BOX)
     else: 
         typed: bool = False
-        while typed is not True and f < len(WORD):
-            if WORD[f] == word_guess[typed]:
+
+        while typed is not True and actplace < len(WORD):
+            if WORD[actplace] == word_guess[typed]:
                 typed: bool = True
-            f += 1
+            actplace += 1
+
         if typed is not True:
             print(WHITE_BOX)
         else:
             print(YELLOW_BOX)
-    input += 1
+
+    place += 1
 
 if word_guess == "python":
     print("Woo! You got it")
