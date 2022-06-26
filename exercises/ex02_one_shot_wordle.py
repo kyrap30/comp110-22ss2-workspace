@@ -7,21 +7,36 @@ GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
 i: int = 0
 box_emoji: str = ""
-found_index: int = 0
-found: bool = False
+f: int = 0
 
-word_guess: str = input("What is your 6-letter guess? ")
+word_guess: str = str(input(f"What is your {len(WORD)} guess? "))
 
-if len(word_guess) != 6:
+if len(WORD) != len(word_guess):
     word_guess: str = input("That was not 6 letters! Try again: ")
-else: 
-    if word_guess[i] == WORD[i]:
-       print(GREEN_BOX)
-    
+
+
+while i < len(word_guess):
+    if WORD[i] == word_guess[i]:
+        print(GREEN_BOX)
+    else: 
+        found: bool = False
+        while found is not True and f < len(WORD):
+            if WORD[f] == word_guess[found]:
+                found: bool = True
+            f += 1
+        if found is not True:
+            print(WHITE_BOX)
+        else:
+            print(YELLOW_BOX)
+    i += 1
+
 if word_guess == "python":
     print("Woo! You got it")
+    print(box_emoji)
+    exit()
 else: 
     print("Not quite. Play again soon!")
+    print(box_emoji)
     exit()
 
 
