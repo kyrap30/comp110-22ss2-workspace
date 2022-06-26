@@ -19,12 +19,12 @@ while i < len(word_guess):
     if WORD[i] == word_guess[i]:
         print(GREEN_BOX)
     else: 
-        found: bool = False
-        while found is not True and f < len(WORD):
-            if WORD[f] == word_guess[found]:
-                found: bool = True
+        typed: bool = False
+        while typed is not True and f < len(WORD):
+            if WORD[f] == word_guess[typed]:
+                typed: bool = True
             f += 1
-        if found is not True:
+        if typed is not True:
             print(WHITE_BOX)
         else:
             print(YELLOW_BOX)
