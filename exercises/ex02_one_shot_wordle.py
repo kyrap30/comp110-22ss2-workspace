@@ -1,43 +1,46 @@
 """EX02 - One shot wordle."""
 __author__ = "730466380"
 
-WORD: str = "python"
-WHITE_BOX: str = "\U00002B1C"
-GREEN_BOX: str = "\U0001F7E9"
-YELLOW_BOX: str = "\U0001F7E8"
+"""Defining secret word and prompting player for guess."""
+secret_word: str = "python"
+word_guess: str = input(f"What is your {len(secret_word)}-letter word_guess? ")
 
-box_emoji: str = ""
-
-word_guess: str = str(input(f"What is your 6-letter guess? "))
-while len(WORD) != len(word_guess):
-    word_guess: str = str(input("That was not 6 letters! Try again: "))
-
+"""Making sure the guessed word is the length of the secret word."""
+while len(secret_word) != len(word_guess):
+    a: str = str(input(f"That was not {len(secret_word)} letters! Try again: "))
+    word_guess = a
 place: int = 0
 
+"""Assigning names to corresponding box/emoji sequence."""
+GREEN_BOX: str = "\U0001F7E9"
+YELLOW_BOX: str = "\U0001F7E8"
+WHITE_BOX: str = "\U00002B1C"
+box_sequence: str = ""
+
+"""Creating sequence of box emojis""" 
+"""based on if any characters in the guessed word are in the secret word"""
+"""and correctness of placement."""
 while place < len(word_guess):
-    if WORD[place] == word_guess[place]:
-        box_emoji += GREEN_BOX
-
+    if secret_word[place] == word_guess[place]:
+        box_sequence += GREEN_BOX
     else: 
-        typed: bool = False
-        actplace: int = 0
-
-        while typed is not True and actplace < len(WORD):
-            if WORD[actplace] == word_guess[typed]:
-                typed: bool = True
-            actplace += 1
-
-        if typed is not True:
-            box_emoji += WHITE_BOX 
-
-        else:
-            box_emoji += YELLOW_BOX
-
+        guessed_char: bool = False
+        alt_place: int = 0
+        while guessed_char is False and alt_place < len(secret_word):
+            if word_guess[place] == secret_word[alt_place]:
+                b: bool = True
+                guessed_char = b
+            alt_place += 1
+        if guessed_char is False:
+            box_sequence += WHITE_BOX
+        if guessed_char is True:
+            box_sequence += YELLOW_BOX
     place += 1
 
-if word_guess == "python":
-    print("Woo! You got it")
-    print(box_emoji)
-else: 
+"""Printing emoji sequence and final message to player."""
+if secret_word != word_guess:
+    print(box_sequence)
     print("Not quite. Play again soon!")
-    print(box_emoji)
+else: 
+    print(box_sequence)
+    print("Woo! You got it")
