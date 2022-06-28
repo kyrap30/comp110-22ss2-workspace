@@ -1,7 +1,7 @@
 "EX03 - Structured Wordle"
 __author__ = "730466380"
 
-
+"""Checking if the a character is contained in the string."""
 def contains_char(searched_string: str, searched_chr: str) -> bool:
     
     assert len(searched_chr) == 1
@@ -11,7 +11,8 @@ def contains_char(searched_string: str, searched_chr: str) -> bool:
     else:
         return False
 
-
+"""Given strings of the same length,"
+"compares the characters presence and position to the secret."""
 def emojified(guess: str, secret: str) -> str:
     assert len(guess) == len(secret)
     
@@ -33,7 +34,8 @@ def emojified(guess: str, secret: str) -> str:
             place += 1
     return box_sequence
 
-
+"Makes sure the word guessed by the user is the same length as"
+"the secret word declared in the code."
 def input_guess(num: int) -> str:
     ans: str = input(f"Enter a {num} letter word: ")
     
@@ -51,14 +53,17 @@ def main() -> None:
         print(f"===Turn {turn_num}/6 ===")
         guess = input_guess(len(secret))
         print(emojified(guess, secret))
-        if guess != secret and turn_num <= 6:
-            turn_num += 1
-        if guess == secret and turn_num <= 6:
-            print(f"You won in {turn_num}/6 turns!")
-            turn_num += 1
+        if turn_num <= 6:
+            if guess != secret:
+                turn_num += 1
+            if guess == secret:
+                print(f"You won in {turn_num}/6 turns!")
+                turn_num += 1  
         if turn_num > 6:
-            print("X/6 - Sorry, try again tomorrow!")
-
+            if guess != secret:
+                turn_num += 1
+                print("X/6 - Sorry, try again tomorrow!")
+                exit()
 
 if __name__ == "__main__":
     main()
