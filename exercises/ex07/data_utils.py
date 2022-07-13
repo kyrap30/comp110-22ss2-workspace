@@ -47,7 +47,7 @@ def head(col_table: dict[str, list[str]], num_row: int) -> dict[str, list[str]]:
                 col_val.append(col_table[column][i])
                 i += 1
         result[column] = col_val
-        return result
+    return result
 
 
 def select(col_table: dict[str, list[str]], col_name: list[str]) -> dict[str, list[str]]:
@@ -65,11 +65,10 @@ def concat(col_table_1: dict[str, list[str]], col_table_2: dict[str, list[str]])
         result[column] = col_table_1[column]
     for column in col_table_2:
         if column in result:
-            result[column] = col_table_2[column]
-        else:
-            for val in col_table_2[column]:
-                result[column].append(val)
-        return result
+            for value in col_table_2[column]:
+                result[column].append(value)
+        result[column] = col_table_2[column]
+    return result
 
 
 def count(freq: list[str]) -> dict[str, int]:
